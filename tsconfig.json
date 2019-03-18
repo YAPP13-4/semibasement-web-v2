@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "domain/*": ["src/domain/*"],
+            "presentation/*": ["src/presentation/*"],
+            "application/*": ["src/*"]
+        },
+        "types": [
+            "node",
+            "google.analytics",
+            "facebook-pixel",
+            "facebook-js-sdk",
+            "jest"
+        ],
+        "lib": [
+            "es2015",
+            "scripthost",
+            "dom"
+        ],
+        "sourceMap": true,
+        "removeComments": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "noStrictGenericChecks": true,
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react"
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "static",
+        "src/**/*.test.tsx"
+    ]
+}
