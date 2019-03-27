@@ -11,6 +11,6 @@ export const requestGET = (url: string, params?: Object, headers?: Object) =>
 export const requestPOST = (
 	url: string,
 	data: any,
-	headers: Object,
 	params?: Object,
-) => AxiosInstance.post(url, data, headers);
+	headers?: Object,
+) => AxiosInstance.post(url, data, { params, headers });
