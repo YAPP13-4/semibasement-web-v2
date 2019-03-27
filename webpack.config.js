@@ -74,7 +74,6 @@ module.exports = {
 			template: './src/index.html',
 			filename: './index.html',
 		}),
-		new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/),
 		new BundleAnalyzerPlugin(),
 	],
 	devServer: {
