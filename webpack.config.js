@@ -85,6 +85,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			domain: join(__dirname, 'src/domain/'),
+			assets: join(__dirname, 'src/assets/'),
 			presentation: join(__dirname, 'src/presentation/'),
 			utils: join(__dirname, 'src/utils/'),
 			application: join(__dirname, 'src/'),
