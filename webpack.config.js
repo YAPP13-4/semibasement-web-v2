@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 	.BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,7 +25,7 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.p?css$/,
+				test: /\.s?css$/,
 				use: [
 					'style-loader',
 					{
@@ -36,12 +37,12 @@ module.exports = {
 							sourceMap: true,
 						},
 					},
-					'postcss-loader',
+					'sass-loader',
 				],
 			},
 			{
 				test: /\.(gif|png|jpe?g|svg|jpg)$/i,
-				use: ['file-loader'],
+				use: 'file-loader',
 			},
 			{
 				test: /\.less$/,
