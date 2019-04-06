@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 
-const animationData = require('src/assets/loading/loading.json');
+const animationData = require('application/assets/loading/loading.json');
 
 export const Loading: React.FC = () => {
 	const defaultOptions = {
