@@ -1,0 +1,19 @@
+.wrapper {
+	background: #000000;
+	display: flex;
+	flex-wrap: nowrap;
+	padding: 12px 14px;
+	color: white;
+	& .left {
+		flex: 1 1 auto;
+	}
+
+	& .center {
+		text-align: center;
+		flex: 1 1 auto;
+	}
+
+	& .right {
+		flex: 1 1 auto;
+	}
+}

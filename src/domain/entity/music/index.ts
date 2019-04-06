@@ -6,7 +6,7 @@ export class Music extends Entity {
 	constructor(
 		public id: number,
 		public musician: MusicianInfo,
-		public music: MusicInfo,
+		public musicInfo: MusicInfo,
 	) {
 		super();
 	}
