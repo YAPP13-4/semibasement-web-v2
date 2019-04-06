@@ -5,7 +5,7 @@ import { CurationMusicMapper } from './mapper';
 
 export class MusicCuratingListApiProvider {
 	get = (): Promise<List<Music>> =>
-		requestGET('seba-choice')
+		requestGET('/seba-choice')
 			.then(res => res.data)
 			.then((data: Array<any>) =>
 				List(
