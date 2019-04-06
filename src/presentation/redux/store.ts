@@ -4,16 +4,12 @@ import saga from './sagas';
 import reducer from './reducers';
 
 export default (() => {
-	const sagaMiddleware = createSagaMiddleware();
-	const composeEnhancers =
-		(window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const sagaMiddleware = createSagaMiddleware();
+  const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-	const store = createStore(
-		reducer,
-		composeEnhancers(applyMiddleware(sagaMiddleware)),
-	);
+  const store = createStore(reducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
 
-	sagaMiddleware.run(saga);
+  sagaMiddleware.run(saga);
 
-	return store;
+  return store;
 })();

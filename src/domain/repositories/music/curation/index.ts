@@ -3,6 +3,13 @@ import { List } from 'immutable';
 import { MusicCuratingListApiProvider } from 'application/api/music/curation';
 
 export class CurationMusicRepository {
-	constructor(private api: MusicCuratingListApiProvider) {}
-	get = (): Promise<List<Music>> => this.api.get();
+  private api: MusicCuratingListApiProvider;
+
+  public constructor(api: MusicCuratingListApiProvider) {
+    this.api = api;
+  }
+
+  public get = (): Promise<List<Music>> => {
+    return this.api.get();
+  };
 }

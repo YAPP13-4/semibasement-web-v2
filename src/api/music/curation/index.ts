@@ -4,12 +4,18 @@ import { requestGET } from 'application/api';
 import { CurationMusicMapper } from './mapper';
 
 export class MusicCuratingListApiProvider {
-	get = (): Promise<List<Music>> =>
-		requestGET('/seba-choice')
-			.then(res => res.data)
-			.then((data: Array<any>) =>
-				List(
-					data.map((music: any) => new CurationMusicMapper().fromJson(music)),
-				),
-			);
+  public get = (): Promise<List<Music>> =>
+    requestGET('seba-choice')
+      .then(res => {
+        return res.data;
+      })
+      /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+      .then((data: any[]) => {
+        return List(
+          /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+          data.map((music: any) => {
+            return new CurationMusicMapper().fromJson(music);
+          }),
+        );
+      });
 }

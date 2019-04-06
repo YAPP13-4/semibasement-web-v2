@@ -4,31 +4,31 @@ import { Music } from 'domain/entity/music';
 
 type SebaCurationMusicListAction = ActionType<typeof Actions>;
 
-type SebaCurationMusicState = {
-	data: Music;
-	loading: boolean;
-};
+interface SebaCurationMusicState {
+  data: Music;
+  loading: boolean;
+}
 
 const initialState: SebaCurationMusicState = {
-	data: null as Music,
-	loading: false,
+  data: null as Music,
+  loading: false,
 };
 
 export const sebaMusic = (
-	state: SebaCurationMusicState = initialState,
-	action: SebaCurationMusicListAction,
+  state: SebaCurationMusicState = initialState,
+  action: SebaCurationMusicListAction,
 ): SebaCurationMusicState => {
-	switch (action.type) {
-		case getType(Actions.requestSebaCurationMusicLists):
-			return {
-				...state,
-			};
-		case getType(Actions.successSebaCurationMusicLists):
-			return {
-				...state,
-				data: action.payload,
-			};
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case getType(Actions.requestSebaCurationMusicLists):
+      return {
+        ...state,
+      };
+    case getType(Actions.successSebaCurationMusicLists):
+      return {
+        ...state,
+        data: action.payload,
+      };
+    default:
+      return state;
+  }
 };

@@ -1,10 +1,12 @@
-import { CurationMusicRepository } from './music/curation';
 import { MusicCuratingListApiProvider } from 'application/api/music/curation';
+import { CurationMusicRepository } from './music/curation';
 
 export class RepositoryDependencies {
-	constructor(
-		public curationMusic: CurationMusicRepository = new CurationMusicRepository(
-			new MusicCuratingListApiProvider(),
-		),
-	) {}
+  private curationMusic: CurationMusicRepository;
+
+  public constructor() {
+    this.curationMusic = new CurationMusicRepository(new MusicCuratingListApiProvider());
+  }
+
+  public getCurationMusic = () => this.curationMusic;
 }
