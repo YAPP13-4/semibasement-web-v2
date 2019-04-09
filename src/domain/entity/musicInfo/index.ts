@@ -1,14 +1,14 @@
 import { Entity } from 'domain/entity';
 
 export class MusicInfo extends Entity {
-  private title: string;
-  private description: string;
-  private artworkImg: string;
-  private duration: number;
-  private streamUrl: string;
-  private playCount: number;
-  private createdAtSoundCloud: Date;
-  private createdAt: Date;
+  public title: string;
+  public description: string;
+  public artworkImg: string;
+  public duration: number;
+  public streamUrl: string;
+  public playCount: number;
+  public createdAtSoundCloud: Date;
+  public createdAt: Date;
 
   public constructor(
     title: string,
