@@ -1,16 +1,18 @@
 import { ActionType, getType } from 'typesafe-actions';
 import * as Actions from './actions';
 import { Music } from 'domain/entity/music';
+import { List } from 'immutable';
+import { emptyList } from 'application/utils';
 
-type SebaCurationMusicListAction = ActionType<typeof Actions>;
+export type SebaCurationMusicListAction = ActionType<typeof Actions>;
 
-interface SebaCurationMusicState {
-  data: Music;
+export type SebaCurationMusicState = {
+  data: List<Music>;
   loading: boolean;
-}
+};
 
 const initialState: SebaCurationMusicState = {
-  data: null as Music,
+  data: emptyList(),
   loading: false,
 };
 
