@@ -2,19 +2,19 @@ import React from 'react';
 import { Music } from 'domain/entity/music';
 
 type Props = {
-	music: Music;
+  musicInfo: Music;
 };
 
-export const MusicPanel: React.FC<Props> = ({ music }) => {
-	const { musicInfo, musician } = music;
+export const MusicPanel: React.FC<Props> = ({ musicInfo }) => {
+  const { musician, music } = musicInfo;
 
-	return (
-		<>
-			<img>thumbnail</img>
-			<section>
-				<div>{musicInfo.title}</div>
-				<div>{musician.musician}</div>
-			</section>
-		</>
-	);
+  return (
+    <>
+      <img>thumbnail</img>
+      <section>
+        <div>{music.title}</div>
+        <div>{musician.name}</div>
+      </section>
+    </>
+  );
 };
