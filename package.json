@@ -4,7 +4,8 @@
   "description": "semibasement 의 새로운 버전",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/eslint/bin/eslint.js --fix ./src/*/**/*.ts",
+    "lint": "./node_modules/eslint/bin/eslint.js ./src/*/**/*.ts",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js --fix ./src/*/**/*.ts",
     "start": "webpack-dev-server --hot --mode development --open",
     "dev": "webpack --mode development --config webpack.config.js",
     "build": "webpack --mode production --config webpack.config.js"
