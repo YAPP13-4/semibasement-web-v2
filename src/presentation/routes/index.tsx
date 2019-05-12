@@ -3,20 +3,24 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Header } from 'presentation/components/header';
 import { Loading } from 'presentation/components/loading';
 
+const styles = require('./styles.scss');
+
 export enum PAGE_ROUTE {
-	HOME = '/',
+  LANDING = '/',
+  HOME = '/home',
 }
 
+const LandingRoutes = lazy(() => import('./landing'));
 const HomeRoutes = lazy(() => import('./home'));
 
 export const EntryRoute = () => (
-	<BrowserRouter>
-		<Header>
-			<Suspense fallback={<Loading />}>
-				<Switch>
-					<Route path={PAGE_ROUTE.HOME} component={HomeRoutes} />
-				</Switch>
-			</Suspense>
-		</Header>
-	</BrowserRouter>
+  <BrowserRouter>
+    <Header />
+    <Suspense fallback={<Loading />}>
+      <Switch>
+        <Route exact path={PAGE_ROUTE.LANDING} component={LandingRoutes} />
+        <Route path={PAGE_ROUTE.HOME} component={HomeRoutes} />
+      </Switch>
+    </Suspense>
+  </BrowserRouter>
 );
