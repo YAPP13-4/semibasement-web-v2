@@ -1,0 +1,10 @@
+@import 'assets/variable/_variable.scss';
+
+body {
+  font-family: $font-normal;
+  min-height: 800px;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #181818, #000000);
+  margin: 0 auto;
+  padding: 0;
+}

@@ -1,19 +1,58 @@
+@import 'assets/variable/_variable.scss';
+
 .wrapper {
-	background: #000000;
-	display: flex;
-	flex-wrap: nowrap;
-	padding: 12px 14px;
-	color: white;
-	& .left {
-		flex: 1 1 auto;
-	}
+  background: #000000;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0 54px;
+  color: white;
+  height: 60px;
 
-	& .center {
-		text-align: center;
-		flex: 1 1 auto;
-	}
+  & .left {
+    flex: 1;
+    margin: auto 0;
 
-	& .right {
-		flex: 1 1 auto;
-	}
+    span {
+      display: block;
+      background: url('../../../assets/icons/icon2.png') no-repeat -442px -41px;
+      width: 19px;
+      height: 13px;
+    }
+  }
+
+  & .center {
+    flex: 1;
+    text-align: center;
+    margin: auto 0;
+  }
+
+  & .right {
+    flex: 1;
+    margin: auto 0;
+    display: flex;
+    padding: 5px;
+
+    & .btn {
+      border: solid 1px #979797;
+      border-radius: 18.5px;
+      padding: 10px 20px;
+      font-family: $font-normal;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      flex-basis: 112px;
+      flex-shrink: 0;
+      margin: 5px;
+    }
+
+    & .signIn {
+      color: white;
+      background-color: transparent;
+    }
+
+    & .signUp {
+      color: #020202;
+      background-color: $green;
+    }
+  }
 }

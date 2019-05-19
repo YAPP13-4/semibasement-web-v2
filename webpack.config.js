@@ -1,6 +1,5 @@
 /* eslint-disable */
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const join = require('path').join;
@@ -41,7 +40,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(gif|png|jpe?g|svg|jpg)$/i,
+        test: /\.(gif|png|jpe?g|svg|jpg|mp4)$/i,
         use: 'file-loader',
       },
       {
@@ -58,15 +57,19 @@ module.exports = {
         ],
       },
       {
-        test: /\.svg$/,
+        test: /\.(svg)$/,
         use: {
           loader: 'url-loader',
           options: {
             name: '[name].[ext]?[hash]',
-            publicPath: './dist/',
             limit: 20000, // 20kb
           },
         },
+      },
+      {
+        test: /\.jsx?$/,
+        include: /node_modules/,
+        use: ['react-hot-loader/webpack'],
       },
     ],
   },
