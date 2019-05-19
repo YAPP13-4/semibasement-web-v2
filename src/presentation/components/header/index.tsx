@@ -3,9 +3,7 @@ import React from 'react';
 const styles = require('./styles.scss');
 const logo = require('application/assets/logos/logo.png');
 
-type Props = {
-  // userInfo:
-};
+type Props = {};
 
 export const Header: React.FC = () => (
   <header className={styles.wrapper}>
