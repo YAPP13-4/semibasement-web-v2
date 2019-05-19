@@ -78,12 +78,12 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html',
     }),
-    new BundleAnalyzerPlugin(),
+    
   ],
   devServer: {
     contentBase: join(__dirname, 'dist'),
     compress: true,
-    port: 3000,
+    port: 3001,
     historyApiFallback: true,
   },
   resolve: {
