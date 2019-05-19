@@ -628,6 +628,14 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-syntax-typescript" "^7.2.0"
 
+"@babel/plugin-transform-typescript@^7.4.4":
+  version "7.4.4"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.4.4.tgz#93e9c3f2a546e6d3da1e9cc990e30791b807aa9f"
+  integrity sha512-rwDvjaMTx09WC0rXGBRlYSSkEHOKRrecY6hEr3SVIPKII8DVWXtapNAfAyMC0dovuO+zYArcAuKeu3q9DNRfzA==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-typescript" "^7.2.0"
+
 "@babel/plugin-transform-unicode-regex@^7.4.3":
   version "7.4.3"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.4.3.tgz#3868703fc0e8f443dda65654b298df576f7b863b"
@@ -6731,11 +6739,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typesafe-actions@^3.3.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/typesafe-actions/-/typesafe-actions-3.4.0.tgz#cdf925941eafc75a659ebc2d584b673b86a1a5ab"
-  integrity sha512-FW6f61NEe8B8vDftLs3vFMLzyROvqlDS6jhbc2j/fPlCZ6MsY3V4bE4i83uPGfy7Kvvq70ePtsb4nPes9ROXqw==
 
 typescript-compare@^0.0.2:
   version "0.0.2"
