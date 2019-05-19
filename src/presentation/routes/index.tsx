@@ -2,8 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Header } from 'presentation/components/header';
 import { Loading } from 'presentation/components/loading';
-
-const styles = require('./styles.scss');
+import './styles.scss';
 
 export enum PAGE_ROUTE {
   LANDING = '/',
