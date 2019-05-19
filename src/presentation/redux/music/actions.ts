@@ -1,10 +1,48 @@
-import { createStandardAction } from 'typesafe-actions';
 import { Music } from 'domain/entity/music';
 import { List } from 'immutable';
+import { actionTypes, ErrorInfo } from '../actionTypes';
 
-const REQUEST = 'SEBA_MUSIC/REQUEST';
-const SUCCESS = 'SEBA_MUSIC/SUCCESS';
+const PREFIX = actionTypes.HOME_MUSIC;
+export const REQUEST = `${PREFIX}/REQUEST`;
+export const SUCCESS = `${PREFIX}/SUCCESS`;
+export const FAIL = `${PREFIX}/FAIL`;
 
-export const requestSebaCurationMusicLists = createStandardAction(REQUEST)<undefined>();
+type SebaMusicRequest = {
+  type: string;
+}
 
-export const successSebaCurationMusicLists = createStandardAction(SUCCESS)<List<Music>>();
+
+type SebaMusicSuccess = {
+  type: string;
+  data: List<Music>;
+}
+
+type SebaMusicFail = {
+  type: string;
+  error: ErrorInfo;
+}
+
+export type SebaMusicAction = SebaMusicRequest &
+SebaMusicSuccess &
+SebaMusicFail;
+
+export type RequestSebaMusic = () => SebaMusicRequest;
+
+export const requestSebaCurationMusicLists: RequestSebaMusic = (): SebaMusicRequest  => ({
+  type: REQUEST,
+})
+
+export const requestSebaCurationMusicSuccess = (
+  data: List<Music>
+): SebaMusicSuccess => ({
+  type: SUCCESS,
+  data,
+})
+
+export const requestSebaCurationMusicFail = (
+  error: ErrorInfo
+): SebaMusicFail => ({
+  type: SUCCESS,
+  error,
+})
+
