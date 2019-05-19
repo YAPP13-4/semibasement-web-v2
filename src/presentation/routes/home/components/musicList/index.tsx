@@ -2,17 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { MusicPanel } from './music';
 import { Dispatch, bindActionCreators } from 'redux';
-import { requestSebaCurationMusicLists } from 'presentation/redux/music/actions';
+import { requestSebaCurationMusicLists, RequestSebaMusic } from 'presentation/redux/music/actions';
 import { List } from 'immutable';
 import { Music } from 'domain/entity/music';
-import { SebaCurationMusicState } from 'presentation/redux/music/reducer';
+import { SebaMusicStateProps } from 'presentation/redux/music/reducer'; 
+import { FetchResult } from 'presentation/redux/actionTypes';
+import { FetchStatus } from 'presentation/redux/FetchStatus';
+import { Loading } from 'presentation/components/loading';
 
 type DispatchProps = {
-  requestSebaCurationMusicLists: () => any;
+  requestSebaCurationMusicLists: RequestSebaMusic;
 };
 
 type StateProps = {
-  musicList: List<Music>;
+  sebaMusic: SebaMusicStateProps;
+  sebaMusicFetchState: FetchResult;
 };
 
 type Props = DispatchProps & StateProps;
@@ -32,24 +36,33 @@ class MusicList extends React.Component<Props> {
   }
 
   private renderMusicComponent = () => {
-    const { musicList } = this.props;
+    const { sebaMusic } = this.props;
+    const { sebaMusicFetchState } = this.props;
 
-    return musicList.map((music: Music) => <MusicPanel musicInfo={music} />);
+    switch(sebaMusicFetchState.fetchState) {
+      case FetchStatus.DEFAULT:
+      case FetchStatus.LOADING:
+        return <Loading />;
+      default:
+        return <div>hello</div>
+    }
+    // return sebaMusic.data.map((music: Music) => <MusicPanel musicInfo={music} />);
   };
 }
 
-const mapStateToProps = (state: SebaCurationMusicState): StateProps => ({
-  musicList: state.data,
+const mapStateToProps = (state: StateProps): StateProps => ({
+  sebaMusic: state.sebaMusic,
+  sebaMusicFetchState: state.sebaMusicFetchState,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch) => (
   bindActionCreators(
     {
       requestSebaCurationMusicLists,
     },
     dispatch,
-  );
-};
+  )
+);
 
 export default connect(
   mapStateToProps,
