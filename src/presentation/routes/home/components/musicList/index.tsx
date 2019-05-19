@@ -8,8 +8,7 @@ import { Music } from 'domain/entity/music';
 import { SebaCurationMusicState } from 'presentation/redux/music/reducer';
 
 type DispatchProps = {
-  requestSebaCurationMusicLists: () => void;
-  musicList: List<Music>;
+  requestSebaCurationMusicLists: () => any;
 };
 
 type StateProps = {
@@ -18,7 +17,7 @@ type StateProps = {
 
 type Props = DispatchProps & StateProps;
 
-export class MusicList extends React.Component<Props> {
+class MusicList extends React.Component<Props> {
   componentDidMount() {
     this.props.requestSebaCurationMusicLists();
   }
