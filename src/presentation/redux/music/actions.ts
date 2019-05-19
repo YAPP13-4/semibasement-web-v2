@@ -1,4 +1,4 @@
-import { Music } from 'domain/entity/music';
+simport { Music } from 'domain/entity/music';
 import { List } from 'immutable';
 import { actionTypes, ErrorInfo } from '../actionTypes';
 
