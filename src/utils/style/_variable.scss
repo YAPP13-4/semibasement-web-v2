@@ -1,11 +1,19 @@
+/* Font */
 $font-bold: 'AvertaCYBold';
 $font-Extra-bold: 'AvertaCYExtrabold';
 $font-normal: 'AvertaCY';
 $font-korean: 'NanumSquare';
 $fornt-sanfran-light: 'San Francisco Display Ultralight';
 $fornt-sanfran-bold: 'San Francisco Display Bold';
+
+/* Font-weight */
+$bold: 800;
+
+/* Color */
 $green: #45f7aa;
 $ivory: #e1d1d1;
+$white: #ffffff;
+$gray-light: #a6a6a6;
 
 @font-face {
   font-family: 'AvertaCYBold';

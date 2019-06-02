@@ -8,6 +8,7 @@ import { SebaMusicStateProps } from 'presentation/redux/music/reducer';
 import { FetchResult } from 'presentation/redux/actionTypes';
 import { FetchStatus } from 'presentation/redux/FetchStatus';
 import { Loading } from 'presentation/components/loading';
+const styles = require('./styles.scss');
 
 type DispatchProps = {
   requestSebaCurationMusicLists: RequestSebaMusic;
@@ -29,10 +30,12 @@ class MusicList extends React.Component<Props> {
 
   render() {
     return (
-      <>
-        <h2>Seba's choice</h2>
-        {this.renderMusicComponent()}
-      </>
+      <div className={styles.wrapper}>
+        <h2 className={styles.title}>Seba's choice</h2>
+        <div className={styles.content}>
+          {this.renderMusicComponent()}
+        </div>
+      </div>
     );
   }
 
