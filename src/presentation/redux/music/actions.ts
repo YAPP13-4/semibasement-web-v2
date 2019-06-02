@@ -9,43 +9,32 @@ export const FAIL = `${PREFIX}/FAIL`;
 
 type SebaMusicRequest = {
   type: string;
-}
-
+};
 
 type SebaMusicSuccess = {
   type: string;
   data: List<Music>;
-}
+};
 
 type SebaMusicFail = {
   type: string;
   error: ErrorInfo;
-}
+};
 
-export type SebaMusicAction = SebaMusicRequest &
-SebaMusicSuccess &
-SebaMusicFail;
+export type SebaMusicAction = SebaMusicRequest & SebaMusicSuccess & SebaMusicFail;
 
 export type RequestSebaMusic = () => SebaMusicRequest;
 
-export const requestSebaCurationMusicLists: RequestSebaMusic = (): SebaMusicRequest  => {
-  console.log('requestSebaCurationMusicLists')
-  return {
-    type: REQUEST,
-  }
-}
+export const requestSebaCurationMusicLists: RequestSebaMusic = (): SebaMusicRequest => ({
+  type: REQUEST,
+});
 
-export const requestSebaCurationMusicSuccess = (
-  data: List<Music>
-): SebaMusicSuccess => ({
+export const requestSebaCurationMusicSuccess = (data: List<Music>): SebaMusicSuccess => ({
   type: SUCCESS,
   data,
-})
+});
 
-export const requestSebaCurationMusicFail = (
-  error: ErrorInfo
-): SebaMusicFail => ({
+export const requestSebaCurationMusicFail = (error: ErrorInfo): SebaMusicFail => ({
   type: SUCCESS,
   error,
-})
-
+});
