@@ -1,5 +1,5 @@
 import { MusicCuratingListApiProvider } from 'application/api/music';
-import { MusicCurationRepository } from './music/musicCurationRepository';
+import { MusicCurationRepository } from 'application/domain/repositories/music';
 
 export class RepositoryDependencies {
   private curationMusic: MusicCurationRepository;
