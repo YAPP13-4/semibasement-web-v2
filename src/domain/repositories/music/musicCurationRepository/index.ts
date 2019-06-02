@@ -1,8 +1,8 @@
 import { Music } from 'domain/entity/music';
 import { List } from 'immutable';
-import { MusicCuratingListApiProvider } from 'application/api/music/curation';
+import { MusicCuratingListApiProvider } from 'application/api/music';
 
-export class CurationMusicRepository {
+export class MusicCurationRepository {
   private api: MusicCuratingListApiProvider;
 
   public constructor(api: MusicCuratingListApiProvider) {
