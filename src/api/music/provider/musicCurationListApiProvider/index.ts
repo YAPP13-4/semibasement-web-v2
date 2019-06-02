@@ -1,8 +1,7 @@
 import { List } from 'immutable';
 import { Music } from 'domain/entity/music';
 import { requestGET } from 'application/api';
-import { CurationMusicMapper } from './mapper';
-
+import { CurationMusicMapper } from 'application/api/music';
 export class MusicCuratingListApiProvider {
   public get = (): Promise<List<Music>> =>
     requestGET('seba-choice')
