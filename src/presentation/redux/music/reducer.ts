@@ -1,32 +1,56 @@
-import { ActionType, getType } from 'typesafe-actions';
-import * as Actions from './actions';
 import { Music } from 'domain/entity/music';
+import { List } from 'immutable';
+import { emptyList } from 'application/utils';
+import { FetchResult } from '../actionTypes';
+import { FetchStatus } from '../FetchStatus';
+import { SebaMusicAction, REQUEST, SUCCESS, FAIL } from './actions';
 
-type SebaCurationMusicListAction = ActionType<typeof Actions>;
+const sebaMusicFetchInitialState: FetchResult = {
+  fetchState: FetchStatus.DEFAULT,
+};
 
-interface SebaCurationMusicState {
-  data: Music;
-  loading: boolean;
+export type SebaMusicStateProps = {
+  data: List<Music>;
 }
 
-const initialState: SebaCurationMusicState = {
-  data: null as Music,
-  loading: false,
+const sebaMusicInitialState: SebaMusicStateProps = {
+  data: emptyList(),
 };
 
 export const sebaMusic = (
-  state: SebaCurationMusicState = initialState,
-  action: SebaCurationMusicListAction,
-): SebaCurationMusicState => {
+  state: SebaMusicStateProps = sebaMusicInitialState,
+  action: SebaMusicAction,
+): SebaMusicStateProps => {
   switch (action.type) {
-    case getType(Actions.requestSebaCurationMusicLists):
+    case SUCCESS:
       return {
         ...state,
+        data : action.data,
       };
-    case getType(Actions.successSebaCurationMusicLists):
+    case FAIL:
+      return sebaMusicInitialState;
+    default:
+      return state;
+  }
+};
+
+export const sebaMusicFetchState = (
+  state: FetchResult = sebaMusicFetchInitialState,
+  action: SebaMusicAction,
+): FetchResult => {
+  switch (action.type) {
+    case REQUEST:
       return {
-        ...state,
-        data: action.payload,
+        fetchState: FetchStatus.LOADING,
+      };
+    case SUCCESS:
+      return {
+        fetchState: FetchStatus.SUCCESS,
+      };
+    case FAIL:
+      return {
+        fetchState: FetchStatus.ERROR,
+        error: action.error,
       };
     default:
       return state;
