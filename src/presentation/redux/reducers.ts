@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { sebaMusic, sebaMusicFetchState } from './music/reducer';
+import { sebaMusic, sebaMusicFetchState } from './getMusicInfo/reducer';
 
 export default combineReducers({ 
   sebaMusic,
