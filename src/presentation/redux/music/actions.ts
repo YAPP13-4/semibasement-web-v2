@@ -1,4 +1,4 @@
-simport { Music } from 'domain/entity/music';
+import { Music } from 'domain/entity/music';
 import { List } from 'immutable';
 import { actionTypes, ErrorInfo } from '../actionTypes';
 
@@ -9,22 +9,19 @@ export const FAIL = `${PREFIX}/FAIL`;
 
 type SebaMusicRequest = {
   type: string;
-}
-
+};
 
 type SebaMusicSuccess = {
   type: string;
   data: List<Music>;
-}
+};
 
 type SebaMusicFail = {
   type: string;
   error: ErrorInfo;
-}
+};
 
-export type SebaMusicAction = SebaMusicRequest &
-SebaMusicSuccess &
-SebaMusicFail;
+export type SebaMusicAction = SebaMusicRequest & SebaMusicSuccess & SebaMusicFail;
 
 export type RequestSebaMusic = () => SebaMusicRequest;
 
@@ -34,16 +31,13 @@ export const requestSebaCurationMusicLists: RequestSebaMusic = (): SebaMusicRequ
   }
 }
 
-export const requestSebaCurationMusicSuccess = (
-  data: List<Music>
-): SebaMusicSuccess => ({
+export const requestSebaCurationMusicSuccess = (data: List<Music>): SebaMusicSuccess => ({
   type: SUCCESS,
   data,
-})
+});
 
-export const requestSebaCurationMusicFail = (
-  error: ErrorInfo
-): SebaMusicFail => ({
+export const requestSebaCurationMusicFail = (error: ErrorInfo): SebaMusicFail => ({
   type: SUCCESS,
   error,
 })
+s
