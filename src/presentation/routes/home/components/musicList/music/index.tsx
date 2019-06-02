@@ -10,7 +10,7 @@ export const MusicPanel: React.FC<Props> = ({ musicInfo }) => {
 
   return (
     <>
-      <img>thumbnail</img>
+      <img src={music.artworkImg} />
       <section>
         <div>{music.title}</div>
         <div>{musician.name}</div>
