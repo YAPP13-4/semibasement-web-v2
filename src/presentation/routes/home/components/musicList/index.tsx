@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { MusicPanel } from './music';
 import { Dispatch, bindActionCreators } from 'redux';
 import { requestSebaCurationMusicLists, RequestSebaMusic } from 'presentation/redux/music/actions';
-import { List } from 'immutable';
 import { Music } from 'domain/entity/music';
-import { SebaMusicStateProps } from 'presentation/redux/music/reducer'; 
+import { SebaMusicStateProps } from 'presentation/redux/music/reducer';
 import { FetchResult } from 'presentation/redux/actionTypes';
 import { FetchStatus } from 'presentation/redux/FetchStatus';
 import { Loading } from 'presentation/components/loading';
@@ -23,7 +22,9 @@ type Props = DispatchProps & StateProps;
 
 class MusicList extends React.Component<Props> {
   componentDidMount() {
-    this.props.requestSebaCurationMusicLists();
+    const { requestSebaCurationMusicLists } = this.props;
+
+    requestSebaCurationMusicLists();
   }
 
   render() {
@@ -39,14 +40,17 @@ class MusicList extends React.Component<Props> {
     const { sebaMusic } = this.props;
     const { sebaMusicFetchState } = this.props;
 
-    switch(sebaMusicFetchState.fetchState) {
+    switch (sebaMusicFetchState.fetchState) {
       case FetchStatus.DEFAULT:
       case FetchStatus.LOADING:
         return <Loading />;
+      case FetchStatus.ERROR:
+        return <div>Error</div>;
+      case FetchStatus.SUCCESS:
+        return sebaMusic.data.map((music: Music) => <MusicPanel musicInfo={music} />);
       default:
-        return <div>hello</div>
+        return;
     }
-    // return sebaMusic.data.map((music: Music) => <MusicPanel musicInfo={music} />);
   };
 }
 
@@ -55,14 +59,13 @@ const mapStateToProps = (state: StateProps): StateProps => ({
   sebaMusicFetchState: state.sebaMusicFetchState,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => (
+const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
       requestSebaCurationMusicLists,
     },
     dispatch,
-  )
-);
+  );
 
 export default connect(
   mapStateToProps,
