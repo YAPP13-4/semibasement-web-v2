@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime";
 import { applyMiddleware, compose, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import saga from './sagas';
