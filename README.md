@@ -1,4 +1,6 @@
 # semibasement-web-v2
+[![DeepScan grade](https://deepscan.io/api/teams/3276/projects/4823/branches/38461/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=3276&pid=4823&bid=38461)
+![Build Status](https://travis-ci.org/YAPP13-4/semibasement-web-v2.svg?branch=develop)
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/YAPP13-4/semibasement-web-v2.svg)](https://greenkeeper.io/)
 
