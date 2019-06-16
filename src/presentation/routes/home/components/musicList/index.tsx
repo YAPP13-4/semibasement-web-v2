@@ -15,22 +15,11 @@ type StateProps = {
 
 type Props = StateProps;
 
-class MusicList extends React.Component<Props> {
-  render() {
-    return (
-      <div className={styles.wrapper}>
-        <h2 className={styles.title}>Seba's choice</h2>
-        <div className={styles.content}>
-          {this.renderMusicComponent()}
-        </div>
-      </div>
-    );
-  }
-
-  private renderMusicComponent = () => {
-    const { sebaMusic } = this.props;
-    const { sebaMusicFetchState } = this.props;
-
+const MusicList: React.FC<Props> = ({
+  sebaMusic,
+  sebaMusicFetchState
+}) => { 
+  const renderMusicComponent = () => {
     switch (sebaMusicFetchState.fetchState) {
       case FetchStatus.DEFAULT:
       case FetchStatus.LOADING:
@@ -43,6 +32,17 @@ class MusicList extends React.Component<Props> {
         return;
     }
   };
+
+  return (
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>Seba's choice</h2>
+      <div className={styles.content}>
+        {renderMusicComponent()}
+      </div>
+    </div>
+  );
+
+
 }
 
 const mapStateToProps = (state: StateProps): StateProps => ({
