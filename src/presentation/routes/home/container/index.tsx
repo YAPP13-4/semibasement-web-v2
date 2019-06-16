@@ -28,7 +28,7 @@ const SebaMusicContainer: React.FC<Props> = ({
     requestSebaCurationMusicLists
   ])
   return(
-    <MusicList 
+    <MusicList
       musicList={sebaMusic.data}
       musicFetchState={sebaMusicFetchState}
     />

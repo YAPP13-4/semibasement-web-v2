@@ -25,7 +25,7 @@ export const MusicList: React.FC<Props> = ({
       case FetchStatus.ERROR:
         return <div>Error</div>;
       case FetchStatus.SUCCESS:
-        return musicList.map((music: Music) => <MusicPanel musicInfo={music} />);
+        return musicList.map((music: Music) => <MusicPanel key={music.id} musicInfo={music} />);
       default:
         return;
     }
