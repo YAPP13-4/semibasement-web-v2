@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { MusicPanel } from './music';
 import { Music } from 'domain/entity/music';
 import { FetchResult } from 'presentation/redux/actionTypes';
@@ -39,6 +38,4 @@ export const MusicList: React.FC<Props> = ({
       </div>
     </div>
   );
-
-
 }
