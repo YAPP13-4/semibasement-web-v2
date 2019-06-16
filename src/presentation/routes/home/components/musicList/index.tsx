@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { MusicPanel } from './music';
-import { Dispatch, bindActionCreators } from 'redux';
-import { requestSebaCurationMusicLists, RequestSebaMusic } from 'presentation/redux/getMusicInfo/actions';
 import { Music } from 'domain/entity/music';
 import { SebaMusicState } from 'presentation/redux/getMusicInfo/reducer';
 import { FetchResult } from 'presentation/redux/actionTypes';
@@ -10,24 +8,14 @@ import { FetchStatus } from 'presentation/redux/FetchStatus';
 import { Loading } from 'presentation/components/loading';
 const styles = require('./styles.scss');
 
-type DispatchProps = {
-  requestSebaCurationMusicLists: RequestSebaMusic;
-};
-
 type StateProps = {
   sebaMusic: SebaMusicState;
   sebaMusicFetchState: FetchResult;
 };
 
-type Props = DispatchProps & StateProps;
+type Props = StateProps;
 
 class MusicList extends React.Component<Props> {
-  componentDidMount() {
-    const { requestSebaCurationMusicLists } = this.props;
-
-    requestSebaCurationMusicLists();
-  }
-
   render() {
     return (
       <div className={styles.wrapper}>
@@ -62,15 +50,6 @@ const mapStateToProps = (state: StateProps): StateProps => ({
   sebaMusicFetchState: state.sebaMusicFetchState,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      requestSebaCurationMusicLists,
-    },
-    dispatch,
-  );
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
+  mapStateToProps
 )(MusicList);

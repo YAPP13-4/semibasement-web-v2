@@ -1,8 +1,8 @@
 import React from 'react';
-import MusicList from '../components/musicList';
+import SebaMusicContainer from '../container';
 
 export const HomeEntry: React.FC = () => (
   <div>
-    <MusicList />
+    <SebaMusicContainer />
   </div>
 );
