@@ -40,4 +40,3 @@ export const requestSebaCurationMusicFail = (error: ErrorInfo): SebaMusicFail =>
   type: FAIL,
   error,
 })
-s
