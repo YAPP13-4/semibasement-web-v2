@@ -4,7 +4,7 @@ import { MusicPanel } from './music';
 import { Dispatch, bindActionCreators } from 'redux';
 import { requestSebaCurationMusicLists, RequestSebaMusic } from 'presentation/redux/getMusicInfo/actions';
 import { Music } from 'domain/entity/music';
-import { SebaMusicStateProps } from 'presentation/redux/getMusicInfo/reducer';
+import { SebaMusicState } from 'presentation/redux/getMusicInfo/reducer';
 import { FetchResult } from 'presentation/redux/actionTypes';
 import { FetchStatus } from 'presentation/redux/FetchStatus';
 import { Loading } from 'presentation/components/loading';
@@ -15,7 +15,7 @@ type DispatchProps = {
 };
 
 type StateProps = {
-  sebaMusic: SebaMusicStateProps;
+  sebaMusic: SebaMusicState;
   sebaMusicFetchState: FetchResult;
 };
 

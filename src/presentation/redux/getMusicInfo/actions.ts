@@ -37,7 +37,7 @@ export const requestSebaCurationMusicSuccess = (data: List<Music>): SebaMusicSuc
 });
 
 export const requestSebaCurationMusicFail = (error: ErrorInfo): SebaMusicFail => ({
-  type: SUCCESS,
+  type: FAIL,
   error,
 })
 s

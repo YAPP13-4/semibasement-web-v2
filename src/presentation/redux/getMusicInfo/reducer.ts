@@ -9,18 +9,18 @@ const sebaMusicFetchInitialState: FetchResult = {
   fetchState: FetchStatus.DEFAULT,
 };
 
-export type SebaMusicStateProps = {
+export type SebaMusicState = {
   data: List<Music>;
 }
 
-const sebaMusicInitialState: SebaMusicStateProps = {
+const sebaMusicInitialState: SebaMusicState = {
   data: emptyList(),
 };
 
 export const sebaMusic = (
-  state: SebaMusicStateProps = sebaMusicInitialState,
+  state: SebaMusicState = sebaMusicInitialState,
   action: SebaMusicAction,
-): SebaMusicStateProps => {
+): SebaMusicState => {
   switch (action.type) {
     case SUCCESS:
       return {
