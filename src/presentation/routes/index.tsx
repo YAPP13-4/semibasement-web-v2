@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Header } from 'presentation/components/header';
 import { Loading } from 'presentation/components/loading';
+import Player from 'presentation/components/player';
 import './styles.scss';
 
 export enum PAGE_ROUTE {
@@ -21,5 +22,6 @@ export const EntryRoute = () => (
         <Route path={PAGE_ROUTE.HOME} component={HomeRoutes} />
       </Switch>
     </Suspense>
+    <Player />
   </BrowserRouter>
 );

@@ -4,7 +4,8 @@
 		"paths": {
 			"domain/*": ["src/domain/*"],
 			"presentation/*": ["src/presentation/*"],
-			"application/*": ["src/*"]
+      "application/*": ["src/*"],
+      "modules/*": ["src/modules/*"]
 		},
 		"types": ["node"],
 		"lib": ["es2015", "scripthost", "dom"],

@@ -77,7 +77,7 @@ module.exports = (env, options) => {
     devServer: {
       contentBase: join(__dirname, 'dist'),
       compress: true,
-      port: 3000,
+      port: 3030,
       historyApiFallback: true,
     },
     resolve: {
@@ -87,6 +87,7 @@ module.exports = (env, options) => {
         presentation: join(__dirname, 'src/presentation/'),
         utils: join(__dirname, 'src/utils/'),
         application: join(__dirname, 'src/'),
+        modules: join(__dirname,'src/modules/')
       },
       modules: ['node_modules'],
       extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
