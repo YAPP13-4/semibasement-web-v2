@@ -6,34 +6,34 @@ export const REQUEST = `${PREFIX}/REQUEST`;
 export const SUCCESS = `${PREFIX}/SUCCESS`;
 export const FAIL = `${PREFIX}/FAIL`;
 
-type UsersMeRequest = {
+type UserMeRequest = {
   type: string;
 };
 
-type UsersMeSuccess = {
+type UserMeSuccess = {
   type: string;
   data: User;
 };
 
-type UsersMeFail = {
+type UserMeFail = {
   type: string;
   error: ErrorInfo;
 };
 
-export type UserMeAction = UsersMeRequest & UsersMeSuccess & UsersMeFail;
+export type UserMeAction = UserMeRequest & UserMeSuccess & UserMeFail;
 
-export type RequestUserMe = () => UsersMeRequest;
+export type RequestUserMe = () => UserMeRequest;
 
-export const requestUsersMe: RequestUserMe = (): UsersMeRequest => ({
+export const requestUserMe: RequestUserMe = (): UserMeRequest => ({
   type: REQUEST,
 });
 
-export const requestUsersMeSuccess = (data: User): UsersMeSuccess => ({
+export const requestUserMeSuccess = (data: User): UserMeSuccess => ({
   type: SUCCESS,
   data,
 });
 
-export const requestUsersMeFail = (error: ErrorInfo): UsersMeFail => ({
+export const requestUserMeFail = (error: ErrorInfo): UserMeFail => ({
   type: FAIL,
   error,
 });

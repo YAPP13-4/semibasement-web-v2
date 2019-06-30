@@ -3,18 +3,18 @@ import { ActionType, getType } from 'typesafe-actions';
 import { User } from 'domain/entity/user';
 import { UserMeAction, REQUEST, SUCCESS, FAIL } from './actions';
 
-interface UsersMeState {
+export interface UserMeState {
   data: User;
 }
 
-const initialState: UsersMeState = {
+const initialState: UserMeState = {
   data: null as User,
 };
 
-export const usersMe = (
-  state: UsersMeState = initialState,
+export const userMe = (
+  state: UserMeState = initialState,
   action: UserMeAction,
-): UsersMeState => {
+): UserMeState => {
   switch (action.type) {
     case SUCCESS:
       return {
