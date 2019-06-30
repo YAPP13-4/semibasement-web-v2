@@ -1,3 +1,13 @@
-import { Context } from 'application/@context/context';
+import { MusicContext, UserContext } from 'application/@context/context';
 
-export const Application = new Context();
+class SebaApplication {
+    public musicContext: MusicContext;
+    public userContext: UserContext;
+
+    constructor() {
+        this.musicContext = new MusicContext();
+        this.userContext = new UserContext();
+    }
+}
+
+export const Application = new SebaApplication();
