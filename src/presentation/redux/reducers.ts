@@ -1,9 +1,15 @@
 import { combineReducers } from 'redux';
-import { sebaMusic, sebaMusicFetchState } from './getMusicInfo/reducer';
 import { musicPlayer } from './player/reducer';
+import { homeMusicReducer, SebaMusicState } from './getMusicInfo';
+import { loadingReducer, loadingState } from 'application/modules/loading';
+
+export interface StoreState {
+  sebaMusic: SebaMusicState;
+  loading: loadingState;
+}
 
 export default combineReducers({ 
-  sebaMusic,
-  sebaMusicFetchState,
+  sebaMusic: homeMusicReducer,
+  loading: loadingReducer,
   musicPlayer
 });

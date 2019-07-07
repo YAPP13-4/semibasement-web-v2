@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { all, call, put } from 'redux-saga/effects';
 import { startLoading, finishLoading } from 'modules/loading';
-// export type ActionFunction1<T1, R> = (t1: T1) => R;
+
 export const createAsyncAction = (type: string) =>  {
   const FETCH = `${type}/FETCH`
   const SUCCESS = `${type}/SUCCESS`

@@ -27,6 +27,7 @@ const SebaMusicContainer: React.FC<Props> = ({
   const isLoading = useSelector((state: StoreState) => state.loading[getMusic.PREFIX]);
   const { musicList } = useSelector((state: StoreState) => state.sebaMusic);
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getMusic.getMusicAction.fetch());
   }, [

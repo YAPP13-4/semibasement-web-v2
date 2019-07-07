@@ -6,23 +6,23 @@ export const ON_PLAY = `${PREFIX}/ON_PLAY`;
 export const ON_PAUSE = `${PREFIX}/ON_PAUSE`;
 export const ON_TIME_UPDATE = `${PREFIX}/ON_TIME_UPDATE`;
 
-type PlayerStart = {
+export type PlayerStart = {
   type: string;
   isPlaying: boolean;
   music: Music
 };
 
-type PlayerPause = {
+export type PlayerPause = {
   type: string;
   isPlaying: boolean;
 }
 
-type PlayerTimeUpdate = {
+export type PlayerTimeUpdate = {
   type: string;
   currentTime: number;
 };
 
-type PlayerVolumeChange = {
+export type PlayerVolumeChange = {
   type: string;
   volume: number;
 };

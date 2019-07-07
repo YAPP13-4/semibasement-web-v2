@@ -1,10 +1,11 @@
 import { createAction, handleActions } from 'redux-actions';
+import { ActionType } from 'application/utils/actionUtils';
 
 const START_LOADING = 'loading/START_LOADING';
 const FINISH_LOADING = 'loading/FINISH_LOADING';
 
-export const startLoading = createAction<Boolean>(START_LOADING);
-export const finishLoading = createAction<Boolean>(FINISH_LOADING);
+export const startLoading = createAction<string>(START_LOADING);
+export const finishLoading = createAction<string>(FINISH_LOADING);
 
 const initialState = {}
 
@@ -13,11 +14,11 @@ export type loadingState = {
 }
 
 const reducer = {
-  [START_LOADING]: (state: loadingState, action: any) => ({
+  [START_LOADING]: (state: loadingState, action: ActionType) => ({
     ...state,
     [action.payload]: true,
   }),
-  [FINISH_LOADING]: (state: loadingState, action: any) => ({
+  [FINISH_LOADING]: (state: loadingState, action: ActionType) => ({
     ...state,
     [action.payload]: false,
   }),
