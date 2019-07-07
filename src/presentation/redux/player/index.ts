@@ -25,16 +25,16 @@ export const onPause = createNormalAction(PREFIX, 'ON_PAUSE');
 export const onTimeUpdate = createNormalAction(PREFIX, 'ON_TIME_UPDATE');
 
 const reducer = {
-  [onPlay.ACTION_TYPE]: (state: PlayerState, action: ActionType) => ({
+  [onPlay.ACTION_TYPE]: (state: PlayerState, action: ActionType): PlayerState => ({
     ...state,
     isPlaying: true,
-    music: action.payload
+    currentMusic: action.payload
   }),
-  [onPause.ACTION_TYPE]: (state: PlayerState, action: ActionType) => ({
+  [onPause.ACTION_TYPE]: (state: PlayerState, action: ActionType): PlayerState => ({
     ...state,
     isPlaying: false
   }),
-  [onTimeUpdate.ACTION_TYPE]: (state: PlayerState, action: ActionType) => ({
+  [onTimeUpdate.ACTION_TYPE]: (state: PlayerState, action: ActionType): PlayerState => ({
     ...state,
     isPlaying: true,
     currentTime: action.payload
