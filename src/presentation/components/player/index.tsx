@@ -1,9 +1,9 @@
 import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { CLIENT_ID } from 'application/env';
 import { Music } from 'domain/entity/music';
 import { PlayerController } from './controller';
-import { Config } from 'application/config';
 import { PlayerState, onPlay } from 'presentation/redux/player';
 const styles = require('./styles.scss');
 
@@ -39,8 +39,7 @@ class Player extends React.Component<Props> {
     return currentMusic && (
       <div className={ styles.wrap }>
         <audio
-          id="audio"
-          
+          id="audio" 
           onEnded={this.testOnPlay}
           onLoadedMetadata={this.testOnPlay}
           onLoadStart={this.testOnPlay}
@@ -48,7 +47,7 @@ class Player extends React.Component<Props> {
           onTimeUpdate={this.testOnPlay}
           onVolumeChange={this.testOnPlay}
           onPlay={this.testOnPlay}
-          src={`${currentMusic.music.streamUrl}?client_id=${Config.clientID}`}
+          src={`${currentMusic.music.streamUrl}?client_id=${CLIENT_ID}`}
           ref={ (node: HTMLAudioElement) => this.audioElement = node }
         />
         <PlayerController togglePlay={ this.togglePlay } />
