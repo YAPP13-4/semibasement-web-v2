@@ -34,7 +34,7 @@ class Player extends React.Component<Props> {
   }
 
   private renderPlayer = () => {
-    const { onPlay, musicPlayer } = this.props;
+    const { musicPlayer } = this.props;
     const { currentMusic } = musicPlayer;
     
     return currentMusic && (
