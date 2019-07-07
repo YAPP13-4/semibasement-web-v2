@@ -4,7 +4,7 @@ import { requestSebaCurationMusicSuccess, requestSebaCurationMusicFail, REQUEST 
 
 export function* getSebaCurationMusicLists() {
   try {
-    const data = yield call(Application.service.getCurationMusicList, null);
+    const data = yield call(Application.musicContext.service.getCurationMusicList, null);
 
     yield put(requestSebaCurationMusicSuccess(data));
   } catch (error) {
