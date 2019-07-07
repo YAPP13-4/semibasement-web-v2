@@ -1,12 +1,13 @@
 import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { CLIENT_ID } from 'application/env';
 import { Music } from 'domain/entity/music';
 import { PlayerController } from './controller';
 import { PlayerState, onPlay } from 'presentation/redux/player';
 import { StoreState } from 'presentation/redux/reducers';
 const styles = require('./styles.scss');
+
+const CLIENT_KEY = process.env.CLIENT_KEY;
 
 type StateProps = {
   musicPlayer: PlayerState
@@ -38,6 +39,7 @@ class Player extends React.Component<Props> {
     const { musicPlayer } = this.props;
     const { currentMusic } = musicPlayer;
     
+    
     return currentMusic && (
       <div className={ styles.wrap }>
         <audio
@@ -49,7 +51,7 @@ class Player extends React.Component<Props> {
           onTimeUpdate={this.testOnPlay}
           onVolumeChange={this.testOnPlay}
           onPlay={this.testOnPlay}
-          src={`${currentMusic.music.streamUrl}?client_id=${CLIENT_ID}`}
+          src={`${currentMusic.music.streamUrl}?client_id=${CLIENT_KEY}`}
           ref={ (node: HTMLAudioElement) => this.audioElement = node }
         />
         <PlayerController togglePlay={ this.togglePlay } />
@@ -58,11 +60,9 @@ class Player extends React.Component<Props> {
   }
 
   private togglePlay = () => {
-    
     const { audioElement } = this;
     const { musicPlayer } = this.props;
     
-    console.log('audio element', audioElement,'isPlaying',musicPlayer.isPlaying);
     if(musicPlayer.isPlaying) {
       audioElement.pause();
     }
@@ -71,12 +71,9 @@ class Player extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = (state: StoreState): StateProps => {
-  console.log('mapStateToProps',state)
-  return {
-    musicPlayer: state.player
-  }
-}
+const mapStateToProps = (state: StoreState): StateProps => ({
+  musicPlayer: state.player
+})
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   onPlay: (music: Music) => dispatch(onPlay.update(music))

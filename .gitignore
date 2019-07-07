@@ -2,7 +2,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-env.ts
+.env
 # Thumbnails
 ._*
 

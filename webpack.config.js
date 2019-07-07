@@ -2,7 +2,10 @@
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenv = require('dotenv');
 const join = require('path').join;
+
+dotenv.config();
 
 module.exports = (env, options) => {
   const config = { 
@@ -97,6 +100,7 @@ module.exports = (env, options) => {
           template: './src/index.html',
           filename: './index.html',
         }),
+        new webpack.EnvironmentPlugin(['CLIENT_KEY'])
       ],
   }
 
