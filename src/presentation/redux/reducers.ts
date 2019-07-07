@@ -12,5 +12,5 @@ export interface StoreState {
 export default combineReducers({ 
   sebaMusic: homeMusicReducer,
   loading: loadingReducer,
-  playerReducer
+  player: playerReducer,
 });

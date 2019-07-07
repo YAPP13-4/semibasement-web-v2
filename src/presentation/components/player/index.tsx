@@ -5,6 +5,7 @@ import { CLIENT_ID } from 'application/env';
 import { Music } from 'domain/entity/music';
 import { PlayerController } from './controller';
 import { PlayerState, onPlay } from 'presentation/redux/player';
+import { StoreState } from 'presentation/redux/reducers';
 const styles = require('./styles.scss');
 
 type StateProps = {
@@ -33,6 +34,7 @@ class Player extends React.Component<Props> {
   }
 
   private renderPlayer = () => {
+    console.log('renderPlayer', this.props);
     const { musicPlayer } = this.props;
     const { currentMusic } = musicPlayer;
     
@@ -56,7 +58,7 @@ class Player extends React.Component<Props> {
   }
 
   private togglePlay = () => {
-    console.log('toggle');
+    
     const { audioElement } = this;
     const { musicPlayer } = this.props;
     
@@ -69,9 +71,12 @@ class Player extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = (state: StateProps): StateProps => ({
-  musicPlayer: state.musicPlayer
-})
+const mapStateToProps = (state: StoreState): StateProps => {
+  console.log('mapStateToProps',state)
+  return {
+    musicPlayer: state.player
+  }
+}
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   onPlay: (music: Music) => dispatch(onPlay.update(music))

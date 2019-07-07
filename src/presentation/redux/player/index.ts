@@ -28,7 +28,7 @@ const reducer = {
   [onPlay.ACTION_TYPE]: (state: PlayerState, action: ActionType) => ({
     ...state,
     isPlaying: true,
-    music: state.currentMusic
+    music: action.payload
   }),
   [onPause.ACTION_TYPE]: (state: PlayerState, action: ActionType) => ({
     ...state,
@@ -37,7 +37,7 @@ const reducer = {
   [onTimeUpdate.ACTION_TYPE]: (state: PlayerState, action: ActionType) => ({
     ...state,
     isPlaying: true,
-    currentTime: state.currentTime
+    currentTime: action.payload
   }),
 }
 
