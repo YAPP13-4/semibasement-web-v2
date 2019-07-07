@@ -3,7 +3,7 @@ import * as getMusic from 'presentation/redux/getMusicInfo';
 import { Action } from 'redux';
 import { useSelector, useDispatch } from 'react-redux'
 import { MusicList } from 'presentation/routes/home/components/musicList/index';
-import { PlayerStart, } from 'presentation/redux/player/actions';
+import { onPlay } from 'presentation/redux/player';
 import { Music } from 'domain/entity/music';
 import { ActionFunctionAny } from 'redux-actions';
 import { StoreState } from 'presentation/redux/reducers';
@@ -11,7 +11,6 @@ import { Loading } from 'presentation/components/loading';
 
 type DispatchProps = {
   fetch: ActionFunctionAny<Action>;
-  onPlay: (music: Music) => PlayerStart
 };
 
 type StateProps = {
@@ -20,9 +19,7 @@ type StateProps = {
 
 type Props = DispatchProps & StateProps;
 
-const SebaMusicContainer: React.FC<Props> = ({
-  onPlay
-}) => {
+const SebaMusicContainer: React.FC<Props> = () => {
   const isLoading = useSelector((state: StoreState) => state.loading[getMusic.PREFIX]);
   const { musicList } = useSelector((state: StoreState) => state.sebaMusic);
   const dispatch = useDispatch();
@@ -35,7 +32,7 @@ const SebaMusicContainer: React.FC<Props> = ({
   // TODO: (소영) 추후 플레이리스트가 늘어날 시 대비. 
   const onClickPlayMusic = (title: string) => (music: Music) => {
     console.log('t',title,music)
-    return onPlay(music);
+    return dispatch(onPlay.update(music))
   }
 
   return(

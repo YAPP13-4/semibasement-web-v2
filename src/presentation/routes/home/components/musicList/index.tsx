@@ -2,12 +2,11 @@ import React from 'react';
 import { MusicPanel } from './music';
 import { Music } from 'domain/entity/music';
 import { List } from 'immutable';
-import { PlayerStart } from 'presentation/redux/player/actions';
 const styles = require('./styles.scss');
 
 type Props = {
   musicList: List<Music>;
-  onClickPlay: (music: Music) => PlayerStart;
+  onClickPlay: (music: Music) => any;
   title: string;
 };
 

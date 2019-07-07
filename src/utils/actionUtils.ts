@@ -3,6 +3,15 @@ import { all, call, put } from 'redux-saga/effects';
 import { startLoading, finishLoading } from 'modules/loading';
 import { ErrorInfo } from 'presentation/redux/actionTypes';
 
+export const createNormalAction = (type: string, actionName: string) => {
+  const ACTION_TYPE = `${type}_${actionName}`
+  
+  return {
+    ACTION_TYPE,
+    update: createAction(ACTION_TYPE),
+  }
+}
+
 export const createAsyncAction = (type: string) =>  {
   const FETCH = `${type}/FETCH`
   const SUCCESS = `${type}/SUCCESS`

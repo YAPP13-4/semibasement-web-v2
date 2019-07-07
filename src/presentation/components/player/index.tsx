@@ -2,18 +2,17 @@ import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Music } from 'domain/entity/music';
-import { PlayerStart, onPlay } from 'presentation/redux/player/actions';
-import { PlayerStateProps } from 'presentation/redux/player/reducer';
 import { PlayerController } from './controller';
 import { Config } from 'application/config';
+import { PlayerState, onPlay } from 'presentation/redux/player';
 const styles = require('./styles.scss');
 
 type StateProps = {
-  musicPlayer: PlayerStateProps
+  musicPlayer: PlayerState
 }
 
 type DispatchProps = {
-  onPlay: (music: Music) => PlayerStart;
+  onPlay: (music: Music) => any;
 }
 
 type Props = DispatchProps & StateProps;
@@ -76,7 +75,7 @@ const mapStateToProps = (state: StateProps): StateProps => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  onPlay: (music: Music) => dispatch(onPlay(music))
+  onPlay: (music: Music) => dispatch(onPlay.update(music))
 })
 
 export default connect(

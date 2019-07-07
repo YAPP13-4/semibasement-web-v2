@@ -19,6 +19,6 @@
 		"target": "es5",
 		"jsx": "react"
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "env.exmpale.ts"],
 	"exclude": ["node_modules", "static", "src/**/*.test.tsx"]
 }
