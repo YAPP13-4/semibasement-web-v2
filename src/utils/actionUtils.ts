@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import { all, call, put } from 'redux-saga/effects';
 import { startLoading, finishLoading } from 'modules/loading';
+import { ErrorInfo } from 'presentation/redux/actionTypes';
 
 export const createAsyncAction = (type: string) =>  {
   const FETCH = `${type}/FETCH`
@@ -13,7 +14,7 @@ export const createAsyncAction = (type: string) =>  {
     FAILURE,
     fetch: createAction(FETCH),
     success: createAction(SUCCESS),
-    failure: createAction(FAILURE),
+    failure: createAction<ErrorInfo>(FAILURE),
   }
 }
 
