@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import * as getMusic from 'presentation/redux/getMusicInfo';
-import { Dispatch, bindActionCreators, Action, Store } from 'redux';
+import { Action } from 'redux';
 import { useSelector, useDispatch } from 'react-redux'
 import { MusicList } from 'presentation/routes/home/components/musicList/index';
-import { FetchResult } from 'presentation/redux/actionTypes';
-import { PlayerStart, onPlay } from 'presentation/redux/player/actions';
+import { PlayerStart, } from 'presentation/redux/player/actions';
 import { Music } from 'domain/entity/music';
 import { ActionFunctionAny } from 'redux-actions';
 import { StoreState } from 'presentation/redux/reducers';

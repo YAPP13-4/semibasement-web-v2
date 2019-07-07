@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Music } from 'domain/entity/music';
 import { PlayerStart, onPlay } from 'presentation/redux/player/actions';

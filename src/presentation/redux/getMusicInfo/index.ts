@@ -1,10 +1,8 @@
 import { Music } from 'domain/entity/music';
 import { List } from 'immutable';
-import { actionTypes, ErrorInfo } from '../actionTypes';
+import { actionTypes } from '../actionTypes';
 import { emptyList } from 'application/utils';
 import { createAsyncAction, ActionType, createSaga } from 'application/utils/actionUtils';
-import { FetchResult } from 'presentation/redux/actionTypes';
-import { FetchStatus } from '../FetchStatus';
 import { handleActions } from 'redux-actions';
 import { takeLatest } from 'redux-saga/effects';
 import { Application } from 'application/@context';
