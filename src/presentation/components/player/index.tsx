@@ -5,6 +5,7 @@ import { Music } from 'domain/entity/music';
 import { PlayerStart, onPlay } from 'presentation/redux/player/actions';
 import { PlayerStateProps } from 'presentation/redux/player/reducer';
 import { PlayerController } from './controller';
+import { Config } from 'application/config';
 const styles = require('./styles.scss');
 
 type StateProps = {
@@ -16,7 +17,6 @@ type DispatchProps = {
 }
 
 type Props = DispatchProps & StateProps;
-export const CLIENT_ID = 'a281614d7f34dc30b665dfcaa3ed7505';
 
 class Player extends React.Component<Props> {
   private audioElement: HTMLAudioElement;
@@ -49,7 +49,7 @@ class Player extends React.Component<Props> {
           onTimeUpdate={this.testOnPlay}
           onVolumeChange={this.testOnPlay}
           onPlay={this.testOnPlay}
-          src={`${currentMusic.music.streamUrl}?client_id=${CLIENT_ID}`}
+          src={`${currentMusic.music.streamUrl}?client_id=${Config.clientID}`}
           ref={ (node: HTMLAudioElement) => this.audioElement = node }
         />
         <PlayerController togglePlay={ this.togglePlay } />
