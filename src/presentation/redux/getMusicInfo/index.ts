@@ -7,7 +7,7 @@ import { handleActions } from 'redux-actions';
 import { takeLatest } from 'redux-saga/effects';
 import { Application } from 'application/@context';
 
-export const PREFIX = actionTypes.HOME_MUSIC;
+export const PREFIX = actionTypes.HOME.MUSIC;
 
 export const getMusicAction = createAsyncAction(PREFIX);
 
