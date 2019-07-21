@@ -5,6 +5,7 @@ export const actionTypes = {
     MUSIC: 'HOME/MUSIC'
   },
   PLAYER: 'PLAYER',
+  USER_ME: 'USERS_ME',
 }
 
 export type ErrorInfo = {

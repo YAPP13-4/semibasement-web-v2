@@ -1,11 +1,11 @@
-import { RepositoryDependencies } from 'domain/repositories';
+import { MusicRepositoryDependencies } from 'domain/repositories';
 import { Music } from 'domain/entity/music';
 import { List } from 'immutable';
 
 export class SEBA {
-  private repo: RepositoryDependencies;
+  private repo: MusicRepositoryDependencies;
 
-  public constructor(repo: RepositoryDependencies) {
+  public constructor(repo: MusicRepositoryDependencies) {
     this.repo = repo;
   }
 
