@@ -1,51 +1,35 @@
 import React, { useEffect } from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import * as userMe from 'presentation/redux/userMe';
+import { useSelector, useDispatch } from 'react-redux';
 import { Login } from 'presentation/routes/login/components/login';
-import { UserMeState } from 'presentation/redux/userMe/reducer';
-import { FetchResult } from 'presentation/redux/actionTypes';
-import { RequestUserMe, requestUserMe } from 'presentation/redux/userMe/actions';
+import { StoreState } from 'presentation/redux/reducers';
+import { ActionFunctionAny } from 'redux-actions';
+import { Action } from 'redux';
+import { LandingEntry } from 'presentation/routes/landing/entry';
 
 type DispatchProps = {
-  requestUserMe: RequestUserMe;
+  fetch: ActionFunctionAny<Action>;
 };
 
 type StateProps = {
-  userMe: UserMeState;
-  userMeFetchState: FetchResult;
+  userMe: userMe.UserMeState;
 };
 
 type Props = DispatchProps & StateProps;
 
-const UserMeContainer: React.FC<Props> = ({
-  userMe,
-  userMeFetchState,
-  requestUserMe
-}) => {
+const UserMeContainer: React.FC<Props> = () => {
+  const { user } = useSelector((state: StoreState) => state.userMe);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    requestUserMe();
+    dispatch(userMe.getUserMe.fetch());
   }, [
-    requestUserMe
-  ])
-  return(
-    <Login
-      user={userMe.data}
-      userMeFetchState={userMeFetchState}
-    />
+    dispatch
+  ]);
+
+  return (
+    !user ? <Login user={user} title="Seba's Choice Login"/> : <LandingEntry/>
   )
 }
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators({
-      requestUserMe,
-    },
-    dispatch,
-  );
-const mapStateToProps = (state: StateProps): StateProps => ({
-  userMe: state.userMe,
-  userMeFetchState: state.userMeFetchState,
-});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(UserMeContainer);
+export default UserMeContainer;

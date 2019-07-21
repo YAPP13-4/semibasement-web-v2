@@ -10,21 +10,21 @@ export const PREFIX = actionTypes.USER_ME;
 export const getUserMe = createAsyncAction(PREFIX);
 
 export type UserMeState = {
-    data: User;
+    user: User;
   }
   
   const initialState: UserMeState = {
-    data: null as User,
+    user: null as User,
   };
 
 const reducer = {
   [getUserMe.SUCCESS]: (state: UserMeState, action: ActionType) => ({
     ...state,
-    data: action.payload
+    user: action.payload
   }),
   [getUserMe.FAILURE]: (state: UserMeState, action: ActionType) => ({
       ...state,
-      data: null as User,
+      user: null as User,
       errorMessage: action.payload,
   })
 }
