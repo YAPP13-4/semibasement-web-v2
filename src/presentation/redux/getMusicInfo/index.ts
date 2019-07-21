@@ -35,5 +35,5 @@ const reducer = {
 export const homeMusicReducer = handleActions(reducer, initialState)
 export const homeMusicSaga = [takeLatest(
   getMusicAction.FETCH, 
-  createSaga(PREFIX, Application.musicContext.service.getCurationMusicList)
+  createSaga(PREFIX, Application.service.getCurationMusicList)
 )]

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { MusicPanel } from './music';
 import { Music } from 'domain/entity/music';
 import { List } from 'immutable';
@@ -35,21 +34,3 @@ export const MusicList: React.FC<Props> = ({
     </div>
   );
 }
-
-const mapStateToProps = (state: StateProps): StateProps => ({
-  sebaMusic: state.sebaMusic,
-  sebaMusicFetchState: state.sebaMusicFetchState,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators(
-    {
-      requestSebaCurationMusicLists,
-    },
-    dispatch,
-  );
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MusicList);

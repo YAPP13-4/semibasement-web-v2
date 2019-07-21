@@ -1,9 +1,7 @@
 import { MusicCuratingListApiProvider } from 'application/api/music';
 import { MusicCurationRepository } from 'application/domain/repositories/music';
-import { UserMeRepository } from './user/userMeRepository';
-import { UserMeProvider } from 'application/api/user';
 
-export class MusicRepositoryDependencies {
+export class RepositoryDependencies {
   private curationMusic: MusicCurationRepository;
 
   public constructor() {
@@ -11,14 +9,4 @@ export class MusicRepositoryDependencies {
   }
 
   public getCurationMusic = () => this.curationMusic;
-}
-
-export class UserRepositoryDependencies {
-  private userMe : UserMeRepository;
-
-  public constructor() {
-    this.userMe = new UserMeRepository(new UserMeProvider());
-  }
-
-  public getUserMe = () => this.userMe;
 }
