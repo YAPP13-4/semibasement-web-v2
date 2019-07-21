@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Music } from 'domain/entity/music';
 import { PlayerController } from './controller';
-import { PlayerState, onPlay } from 'presentation/redux/player';
+import { PlayerState, onPlay, onPause } from 'presentation/redux/player';
 import { StoreState } from 'presentation/redux/reducers';
 const styles = require('./styles.scss');
 
@@ -15,6 +15,7 @@ type StateProps = {
 
 type DispatchProps = {
   onPlay: (music: Music) => any;
+  onPause: () => void;
 }
 
 type Props = DispatchProps & StateProps;
@@ -25,6 +26,20 @@ class Player extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
   }
+
+  // componentDidMount() {
+  //   const { audioElement } = this;
+  //   const { musicPlayer } = this.props;
+
+  //   musicPlayer.currentMusic ?  audioElement.play() : null;
+  // }
+
+  componentDidUpdate() {
+    const { audioElement } = this;
+    const { musicPlayer } = this.props;
+
+    (musicPlayer.currentMusic && musicPlayer.isPlaying)?  audioElement.play() : audioElement.pause();
+  }
   
   render() {
     return this.renderPlayer()
@@ -34,9 +49,20 @@ class Player extends React.Component<Props> {
     console.log('hi')
   }
 
+  private togglePlay = () => {
+    console.log('togglePlay',this.props.musicPlayer.isPlaying)
+    const { audioElement } = this;
+
+    if (this.props.musicPlayer.isPlaying) {
+      audioElement.pause();
+    } else {
+      audioElement.play();
+    }
+  };
+
   private renderPlayer = () => {
     console.log('renderPlayer', this.props);
-    const { musicPlayer } = this.props;
+    const { musicPlayer, onPause } = this.props;
     const { currentMusic } = musicPlayer;
     
     
@@ -47,27 +73,16 @@ class Player extends React.Component<Props> {
           onEnded={this.testOnPlay}
           onLoadedMetadata={this.testOnPlay}
           onLoadStart={this.testOnPlay}
-          onPause={this.testOnPlay}
+          onPause={onPause}
           onTimeUpdate={this.testOnPlay}
           onVolumeChange={this.testOnPlay}
           onPlay={this.testOnPlay}
           src={`${currentMusic.music.streamUrl}?client_id=${CLIENT_KEY}`}
           ref={ (node: HTMLAudioElement) => this.audioElement = node }
         />
-        <PlayerController togglePlay={ this.togglePlay } />
+        <PlayerController player={this.props.musicPlayer} togglePlay={ this.togglePlay } />
       </div>
     )
-  }
-
-  private togglePlay = () => {
-    const { audioElement } = this;
-    const { musicPlayer } = this.props;
-    
-    if(musicPlayer.isPlaying) {
-      audioElement.pause();
-    }
-
-    audioElement.play();
   }
 }
 
@@ -76,7 +91,8 @@ const mapStateToProps = (state: StoreState): StateProps => ({
 })
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  onPlay: (music: Music) => dispatch(onPlay.update(music))
+  onPlay: (music: Music) => dispatch(onPlay.update(music)),
+  onPause: () => dispatch(onPause.update())
 })
 
 export default connect(
