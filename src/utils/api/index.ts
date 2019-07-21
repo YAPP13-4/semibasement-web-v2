@@ -5,6 +5,7 @@ export enum StatusCode {
   NOT_FOUND = 404,
   LOCKED = 423,
 }
+
 export type requestQueryParams = {
   offset: number;
   limit: number;
