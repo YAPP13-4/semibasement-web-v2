@@ -1,7 +1,5 @@
-import { ActionType, getType } from 'typesafe-actions';
-
 import { User } from 'domain/entity/user';
-import { UserMeAction, REQUEST, SUCCESS, FAIL } from './actions';
+import { UserMeAction, SUCCESS } from './actions';
 
 export interface UserMeState {
   data: User;
