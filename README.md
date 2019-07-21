@@ -3,7 +3,8 @@
 ![Build Status](https://travis-ci.org/YAPP13-4/semibasement-web-v2.svg?branch=develop)
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/YAPP13-4/semibasement-web-v2.svg)](https://greenkeeper.io/)
-
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/YAPP13-4/semibasement-web-v2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/YAPP13-4/semibasement-web-v2/alerts/)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/YAPP13-4/semibasement-web-v2.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/YAPP13-4/semibasement-web-v2/alerts/)
 semibasement 의 새로운 버전
 
 > react, redux, typescript
