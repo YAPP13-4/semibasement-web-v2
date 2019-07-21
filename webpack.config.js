@@ -2,7 +2,10 @@
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenv = require('dotenv');
 const join = require('path').join;
+
+dotenv.config();
 
 module.exports = (env, options) => {
   const config = { 
@@ -77,7 +80,7 @@ module.exports = (env, options) => {
     devServer: {
       contentBase: join(__dirname, 'dist'),
       compress: true,
-      port: 3000,
+      port: 3030,
       historyApiFallback: true,
     },
     resolve: {
@@ -87,6 +90,7 @@ module.exports = (env, options) => {
         presentation: join(__dirname, 'src/presentation/'),
         utils: join(__dirname, 'src/utils/'),
         application: join(__dirname, 'src/'),
+        modules: join(__dirname,'src/modules/')
       },
       modules: ['node_modules'],
       extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
@@ -96,6 +100,7 @@ module.exports = (env, options) => {
           template: './src/index.html',
           filename: './index.html',
         }),
+        new webpack.EnvironmentPlugin(['CLIENT_KEY'])
       ],
   }
 

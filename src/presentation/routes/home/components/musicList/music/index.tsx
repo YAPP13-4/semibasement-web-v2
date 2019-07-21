@@ -5,14 +5,18 @@ const styles = require('./styles.scss');
 
 type Props = {
   musicInfo: Music;
+  onClickPlay: (music: Music) => void;
 };
 
-export const MusicPanel: React.FC<Props> = ({ musicInfo }) => {
+export const MusicPanel: React.FC<Props> = ({ 
+  musicInfo, 
+  onClickPlay,
+}) => {
   const { musician, music } = musicInfo;
 
   return (
     <div className={styles.wrapper}>
-      <img src={music.artworkImg} />
+      <img src={music.artworkImg} onClick={ () => onClickPlay(musicInfo) } />
       <div className={styles.title}>
         {music.title}
       </div> 

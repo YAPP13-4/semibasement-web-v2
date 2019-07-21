@@ -1,33 +1,28 @@
 import React from 'react';
 import { MusicPanel } from './music';
 import { Music } from 'domain/entity/music';
-import { FetchResult } from 'presentation/redux/actionTypes';
-import { FetchStatus } from 'presentation/redux/FetchStatus';
-import { Loading } from 'presentation/components/loading';
 import { List } from 'immutable';
 const styles = require('./styles.scss');
 
 type Props = {
   musicList: List<Music>;
-  musicFetchState: FetchResult;
+  onClickPlay: (music: Music) => any;
+  title: string;
 };
 
 export const MusicList: React.FC<Props> = ({
   musicList,
-  musicFetchState
+  onClickPlay,
 }) => { 
   const renderMusicComponent = () => {
-    switch (musicFetchState.fetchState) {
-      case FetchStatus.DEFAULT:
-      case FetchStatus.LOADING:
-        return <Loading />;
-      case FetchStatus.ERROR:
-        return <div>Error</div>;
-      case FetchStatus.SUCCESS:
-        return musicList.map((music: Music) => <MusicPanel key={music.id} musicInfo={music} />);
-      default:
-        return;
-    }
+    
+    return musicList.map((music: Music) => (
+      <MusicPanel 
+        key={music.id}  
+        onClickPlay={onClickPlay}  
+        musicInfo={music} 
+      />
+    ));
   };
 
   return (
